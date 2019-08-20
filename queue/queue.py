@@ -10,11 +10,14 @@ class Queue:
         self.size += 1
 
     def dequeue(self):
-        return self.storage.pop(0)
-        self.size -= 1
+        if self.size == 0:
+            return None
+        else:
+            self.size -= 1
+            return self.storage.pop(0)
 
     def len(self):
-        return len(self.storage)
+        return self.size
 
     def __str__(self):
         return f'{self.storage}'
@@ -23,5 +26,5 @@ class Queue:
 line = Queue()
 line.enqueue("dog")
 line.enqueue("cat")
-print(line.size)
+print(line.len())
 print(line)
